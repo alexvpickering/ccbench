@@ -55,10 +55,11 @@ query_fixed_ngenes <- function(dprimes, drug_info, breaks = c(seq(50, 950, 50), 
   for (n in breaks) {
     cat('Working on ngenes:', n, '\n')
     nc <- as.character(n)
+    ng <- sapply(dprimes, function(x) n)
 
     res <- lapply(seq_along(dprimes), function(i) {
       con <- dprimes[[i]]
-      ccmap::query_drugs(con, drug_info, ngenes = n)
+      ccmap::query_drugs(con, drug_info, ngenes = ng[i])
     })
 
     names(res) <- names(dprimes)
