@@ -54,3 +54,28 @@ get_pvals <- function(es, anals) {
   return(pvals)
 }
 
+
+#' Get ranks for query result
+#'
+#' @param query_res Lists of query results with names corresponding to query signature. Each list
+#'   contains a sorted numeric vector of pearson correlation with names corresponding to queried signatures.
+#'
+#' @return Numeric vector of ranks with the same names as \code{query_res}. NA indicates no query
+#'    took place (e.g. if no genes met p-value threshold for query).
+#' @export
+#'
+#' @examples
+get_ranks <- function(query_res) {
+
+  query_names <- names(query_res)
+  ranks <- c()
+  for (i in seq_along(query_res)) {
+    x <- query_res[[i]]
+    x <- get_unique_drugs(x)
+    query <- query_names[i]
+
+    ranks[query] <- if(length(x)) which(x == query) else NA
+  }
+  names(ranks) <- query_names
+  return(ranks)
+}
