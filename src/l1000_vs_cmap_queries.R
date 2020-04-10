@@ -31,9 +31,9 @@ pvals <- lapply(common, function(drug) l1000_fdr[, drug])
 names(dprimes) <- names(pvals) <- common
 
 # run queries based on pvals and fixed number of genes
-pval_res <- query_pval_ngenes(dprimes, cmap_es, pvals)
+pval_res  <- query_pval_ngenes(dprimes, cmap_es, pvals)
 fixed_res <- query_fixed_ngenes(dprimes, cmap_es)
 
 # save results
-saveRDS(pval_res, 'data/processed/l1000_query_cmap_pvals.rds')
-saveRDS(fixed_res, 'data/processed/l1000_query_cmap_fixed.rds')
+saveRDS(pval_res, 'data/processed/l1000_vs_cmap_pvals.rds')
+saveRDS(fixed_res, 'data/processed/l1000_vs_cmap_fixed.rds')
