@@ -11,6 +11,6 @@ License: MIT
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.0
-Imports:
+Suggests:
   ccdata (>= 1.12.0),
   crossmeta (>= 1.12.0)
